@@ -11,7 +11,8 @@ import { useRef, useEffect, useState } from "react";
 import { a } from "@react-spring/three";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import islandScene from "../assets/3d/Finished3dHome.glb";
+import islandScene from "../assets/3d/Home3D.glb";
+
 
 export function Island({
   isRotating,
@@ -21,20 +22,24 @@ export function Island({
   ...props
 }) {
   const islandRef = useRef();
-  // const [targetPosition, setTargetPosition] = useState(null);
+  const oneTime = useRef(false);
+
   const [color, setColor] = useState("#a1612f");
   const [blinking, setBlinking] = useState(true);
 
   const { nodes, materials } = useGLTF(islandScene);
 
   const handleOnClick = (e) => {
+    if (oneTime.current) return; // To make unable to change the island;
+
     let clientX = e.touches ? e.touches[0].clientX : e.clientX;
     let clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    console.log(clientX, clientY);
+    // console.log(clientX, clientY);
     if (clientY < 450) clientY = 450;
     setIsShooting(true);
     props.onTargetPositionChange([clientX, clientY, 0]); // x, y, z
-    console.log(position);
+    // console.log(position);
+    oneTime.current = true;
   };
 
   useFrame((state) => {
@@ -109,8 +114,9 @@ export function Island({
         <mesh
           geometry={nodes.Object_20.geometry}
           material={materials.ISLAND_BASE}
-          onClick={() => {setBlinking(false);}}
-          // Todo: make functions for these: setBlinkin and setColor
+          onClick={() => {
+            setBlinking(false);
+          }}
         >
           {!blinking ? (
             <primitive attach="material" object={materials.ISLAND_BASE} />
@@ -145,10 +151,6 @@ export function Island({
         <mesh
           geometry={nodes.Object_5.geometry}
           material={materials.DROPS_PIPE}
-        />
-        <mesh
-          geometry={nodes.Object_6.geometry}
-          material={materials.ISLAND_BASE_SHADOW}
         />
       </a.group>
       <a.group

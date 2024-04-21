@@ -6,6 +6,7 @@ import Sky from "../models/Sky";
 import Bird from "../models/Bird";
 import Plane from "../models/Plane";
 import HomeInfo from "../components/HomeInfo";
+import { Stats } from "@react-three/drei";
 
 const Home = () => {
   const [isRotating, setIsRotating] = useState(true);
@@ -25,9 +26,11 @@ const Home = () => {
 
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
-
-    if (window.innerWidth < 768) {
-      screenScale = [0.7, 0.7, 0.7];
+    if (window.innerWidth < 700) {
+      screenScale = [0.4, 0.4, 0.4];
+      screenPosition = [0, -6.5, -43.4];
+    } else if (window.innerWidth < 1300) {
+      screenScale = [0.6, 0.6, 0.6];
       screenPosition = [0, -6.5, -43.4];
     } else {
       screenScale = [1, 1, 1];
@@ -39,10 +42,12 @@ const Home = () => {
 
   const adjustPlaneForScreenSize = () => {
     let screenScale, screenPosition;
-
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 700) {
+      screenScale = [0.8, 0.8, 0.8];
+      screenPosition = [0, -2, 3];
+    } else if (window.innerWidth < 1300) {
       screenScale = [1.5, 1.5, 1.5];
-      screenPosition = [0, -1.5, 0];
+      screenPosition = [0, -2, 3];
     } else {
       screenScale = [3, 3, 3];
       screenPosition = [0, -4, 3];
@@ -60,9 +65,13 @@ const Home = () => {
       >
         {!isShooting && <HomeInfo />}
       </div>
+      <div className="absolute top-20 left-0 z-10 right-0 flex items-center justify-center xl:hidden bg-red-200 py-3  text-center text-xl text-gray-700">
+        <p>For better experience please try this with PC or Laptop!🙏</p>
+      </div>
 
       <Canvas camera={{ near: 0.1, far: 1000 }}>
         <Suspense fallback={<Loader />}>
+          <Stats />
           <directionalLight position={[1, 1, 1]} intensity={2} />
           <ambientLight intensity={0.5} />
           <hemisphereLight
@@ -70,8 +79,6 @@ const Home = () => {
             groundColor="#000000"
             intensity={1}
           />
-
-          <Bird />
           <Sky isRotating={isRotating} />
           <Island
             position={islandPosition}
@@ -82,6 +89,7 @@ const Home = () => {
             setIsShooting={setIsShooting}
             onTargetPositionChange={handleTargetPositionChange}
           />
+          <Bird />
           <Plane
             isRotating={isRotating}
             scale={planeScale}

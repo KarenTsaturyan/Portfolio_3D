@@ -8,7 +8,7 @@ const Skills = () => {
       <h1 className="text-3xl font-bold mt-16 mb-8 text-center">Skills</h1>
       <div className="flex flex-wrap justify-center gap-4 mt-16">
         {skills.map((skill) => (
-          <div className="w-24 h-24 bg-gray-200 rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 relative">
+          <div key={skill.name} className="w-24 h-24 bg-gray-200 rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow duration-300 relative">
             <img
               src={skill.imageUrl}
               alt={skill.name}

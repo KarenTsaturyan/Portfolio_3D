@@ -7,14 +7,49 @@ import {
   useLocation,
 } from "react-router-dom";
 import { Home, Projects, Skills, About } from "./pages";
+import NotFoundPage from "./pages/NotFoundPage";
+
+const SlideFadeTransition = ({ children }) => {
+  return (
+    <motion.div
+      initial={{
+        x: "-100vw",
+        opacity: 0,
+      }}
+      animate={{
+        x: 0,
+        opacity: 1,
+        transition: { type: "spring", stiffness: 120, duration: 0.5 },
+      }}
+      exit={{
+        x: "100vw",
+        opacity: 0,
+        transition: { duration: 0.3 },
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 function ScaleTransition({ children }) {
   return (
     <motion.div
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1, transition: { duration: 0.5 } }}
-      exit={{ scale: 0.8, opacity: 0, transition: { duration: 0.5 } }}
-      className="scale-transition"
+      initial={{
+        scale: 0.8,
+        opacity: 0,
+        transition: { duration: 0.3, ease: "easeOut" },
+      }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+        transition: { duration: 0.3, ease: "easeOut" },
+      }}
+      exit={{
+        scale: 0.8,
+        opacity: 0,
+        transition: { duration: 0.3, ease: "easeOut" },
+      }}
     >
       {children}
     </motion.div>
@@ -65,9 +100,9 @@ const AnimatedRoutes = () => {
       <Route
         path="/projects"
         element={
-          <ScaleTransition>
+          <SlideFadeTransition>
             <Projects />
-          </ScaleTransition>
+          </SlideFadeTransition>
         }
       />
       <Route
@@ -78,6 +113,7 @@ const AnimatedRoutes = () => {
           </ScaleTransition>
         }
       />
+      <Route path="*" element={<NotFoundPage/>} />
     </Routes>
   );
 };
