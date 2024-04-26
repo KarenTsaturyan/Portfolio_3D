@@ -35,7 +35,7 @@ const About = () => {
             As a full stack developer, I have enhanced my technical skills
             through hands-on roles and comprehensive training programs. Over the
             past year, I've collaborated with talented teams to deliver robust
-            software solutions, honing my abilities in both front-end and
+            software solutions, improving my abilities in both front-end and
             back-end technologies.
           </p>
         </div>

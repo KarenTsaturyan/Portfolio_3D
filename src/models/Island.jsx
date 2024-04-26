@@ -13,7 +13,7 @@ import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import islandScene from "../assets/3d/Home3D.glb";
 
-
+// https://sketchfab.com/3d-models/hedgehog-island-labolatory-fan-art-a036aa74dd234c07a3a2af19cff18dc6  (Modified it a little)
 export function Island({
   isRotating,
   setIsRotating,
@@ -64,7 +64,6 @@ export function Island({
       setColor("");
     }
 
-    // Cleanup on component unmount or isActive change
     return () => clearInterval(intervalId);
   }, [blinking]);
 

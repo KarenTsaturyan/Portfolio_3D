@@ -16,7 +16,6 @@ import tailwindcss from './tailwindcss.svg'
 import typescript from './typescript.svg'
 import linkedin from './linkedin.svg'
 import arrow from './arrow.svg'
-import contact from './contact.svg'
 
 export {
     css,
@@ -37,5 +36,4 @@ export {
     typescript,
     linkedin,
     arrow,
-    contact,
 }

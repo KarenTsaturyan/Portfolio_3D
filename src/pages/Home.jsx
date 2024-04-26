@@ -6,7 +6,6 @@ import Sky from "../models/Sky";
 import Bird from "../models/Bird";
 import Plane from "../models/Plane";
 import HomeInfo from "../components/HomeInfo";
-import { Stats } from "@react-three/drei";
 
 const Home = () => {
   const [isRotating, setIsRotating] = useState(true);
@@ -71,7 +70,6 @@ const Home = () => {
 
       <Canvas camera={{ near: 0.1, far: 1000 }}>
         <Suspense fallback={<Loader />}>
-          <Stats />
           <directionalLight position={[1, 1, 1]} intensity={2} />
           <ambientLight intensity={0.5} />
           <hemisphereLight

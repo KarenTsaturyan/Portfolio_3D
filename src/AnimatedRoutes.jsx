@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { motion } from "framer-motion";
 import {
   BrowserRouter as Router,
@@ -8,10 +8,11 @@ import {
 } from "react-router-dom";
 import { Home, Projects, Skills, About } from "./pages";
 import NotFoundPage from "./pages/NotFoundPage";
+import { Loader } from "@react-three/drei";
 
 const SlideFadeTransition = ({ children }) => {
   return (
-    <motion.div
+    <motion.section
       initial={{
         x: "-100vw",
         opacity: 0,
@@ -19,7 +20,7 @@ const SlideFadeTransition = ({ children }) => {
       animate={{
         x: 0,
         opacity: 1,
-        transition: { type: "spring", stiffness: 120, duration: 0.5 },
+        transition: { type: "spring", stiffness: 100, duration: 0.8 },
       }}
       exit={{
         x: "100vw",
@@ -28,13 +29,13 @@ const SlideFadeTransition = ({ children }) => {
       }}
     >
       {children}
-    </motion.div>
+    </motion.section>
   );
 };
 
 function ScaleTransition({ children }) {
   return (
-    <motion.div
+    <motion.section
       initial={{
         scale: 0.8,
         opacity: 0,
@@ -52,7 +53,7 @@ function ScaleTransition({ children }) {
       }}
     >
       {children}
-    </motion.div>
+    </motion.section>
   );
 }
 
@@ -71,7 +72,7 @@ const SmokeOverlay = ({ children }) => {
   };
 
   return (
-    <motion.div
+    <motion.section
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -79,7 +80,7 @@ const SmokeOverlay = ({ children }) => {
       className="smoke-overlay"
     >
       {children}
-    </motion.div>
+    </motion.section>
   );
 };
 
@@ -87,34 +88,38 @@ const AnimatedRoutes = () => {
   const location = useLocation();
 
   return (
-    <Routes location={location} key={location.pathname}>
-      <Route path="/" element={<Home />} />
-      <Route
-        path="/about"
-        element={
-          <SmokeOverlay>
-            <About />
-          </SmokeOverlay>
-        }
-      />
-      <Route
-        path="/projects"
-        element={
-          <SlideFadeTransition>
-            <Projects />
-          </SlideFadeTransition>
-        }
-      />
-      <Route
-        path="/skills"
-        element={
-          <ScaleTransition>
-            <Skills />
-          </ScaleTransition>
-        }
-      />
-      <Route path="*" element={<NotFoundPage/>} />
-    </Routes>
+    <div location={location} key={location.pathname}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/about"
+          element={
+            <SmokeOverlay>
+              <About />
+            </SmokeOverlay>
+          }
+        />
+        <Route
+          path="/projects"
+          element={
+            <Suspense fallback={<Loader />}>
+              <SlideFadeTransition>
+                <Projects />
+              </SlideFadeTransition>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/skills"
+          element={
+            <ScaleTransition>
+              <Skills />
+            </ScaleTransition>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </div>
   );
 };
 

@@ -1,6 +1,14 @@
-import { epam, university, hero } from "../assets/images";
 import {
-    contact,
+    epam, 
+    university, 
+    hero, 
+    formBuider,
+    shop,
+    chatApp,
+    CRUD_PERN,
+    JSProjects,
+} from "../assets/images";
+import {
     css,
     express,
     git,
@@ -156,54 +164,48 @@ export const experiences = [
         ],
     },
 ];
-// Add footer for this Links
 export const socialLinks = [
-    {
-        name: 'Contact',
-        iconUrl: contact,
-        link: '/contact',
-    },
     {
         name: 'GitHub',
         iconUrl: github,
-        link: 'https://github.com/YourGitHubUsername',
+        link: 'https://github.com/KarenTsaturyan',
     },
     {
         name: 'LinkedIn',
         iconUrl: linkedin,
-        link: 'https://www.linkedin.com/in/YourLinkedInUsername',
+        link: 'https://www.linkedin.com/in/karentsaturyan',
     }
 ];
 
 export const projects = [
     {
-        iconUrl: hero,
+        iconUrl: formBuider,
         name: 'Form-Builder on NEXTJS',
-        description: 'Developed a web application that tracks and notifies users of price changes for products on Amazon, helping users find the best deals.',
-        link: 'https://github.com/adrianhajdin/pricewise',
+        description: 'A dynamic form-building application that leverages Next.js for server-side rendering, providing a seamless user experience for creating and managing customizable web forms with various field types',
+        link: 'https://github.com/KarenTsaturyan/FormBuilder',
     },
     {
-        iconUrl: hero,
-        name: 'Real Time Notes-Taker/Caht-app',
-        description: 'Created a full-stack replica of the popular discussion platform "Threads," enabling users to post and engage in threaded conversations.',
-        link: 'https://github.com/adrianhajdin/threads',
+        iconUrl: chatApp,
+        name: 'Real Time Chat Application',
+        description: 'An interactive chat application designed for real-time communication, utilizing WebSockets to enable instant messaging and user presence features across different devices.',
+        link: 'https://github.com/KarenTsaturyan/Chat_App',
     },
     {
-        iconUrl: hero,
+        iconUrl: CRUD_PERN,
         name: 'CRUD app using PERN stack with Docker',
-        description: 'Built a complete clone of Instagram, allowing users to share photos and connect with friends in a familiar social media environment.',
-        link: 'https://github.com/adrianhajdin/social_media_app',
+        description: 'A comprehensive application built with the PERN (PostgreSQL, Express, React, Node.js) stack, encapsulated in Docker containers, that offers robust create, read, update, and delete (CRUD) functionality for efficient data management.',
+        link: 'https://github.com/KarenTsaturyan/Tasks/tree/master/PERN_Project',
     },
     {
-        iconUrl: hero,
+        iconUrl: shop,
         name: 'React-Redux Shop',
-        description: 'App that leverages AI to automatically generate concise & informative summaries from lengthy text content, or blogs.',
-        link: 'https://github.com/adrianhajdin/project_ai_summarizer',
+        description: 'An e-commerce platform developed using React and Redux, providing a responsive user interface that manages state efficiently for real-time updates to shopping carts and product listings.',
+        link: 'https://github.com/KarenTsaturyan/Shop',
     },
     {
-        iconUrl: hero,
+        iconUrl: JSProjects,
         name: 'My Start in JS (Simple projects in one)',
-        description: 'You can see here the projects from which I began my programming journey.',
-        link: 'https://github.com/adrianhajdin/project_ai_summarizer',
+        description: 'You can see here the projects from which I began my programming journey.(Code has not been updated, maybe will do it in the future',
+        link: 'https://github.com/KarenTsaturyan/Landing-Page',
     }
 ];
