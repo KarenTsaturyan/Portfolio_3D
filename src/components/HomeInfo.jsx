@@ -1,6 +1,6 @@
 const HomeInfo = () => {
   return (
-    <h1 className="sm:text-xl sm:leading-snug text-center neo-brutalism-black py-4 px-8 text-white mx-5">
+    <h1 className="text-sm lg:text-xl sm:leading-snug text-center neo-brutalism-black py-4 px-8 text-white mx-5">
       Hi, I'm Karen 👋
       <br />
       Select a blinking island. Each island leads to a unique page,

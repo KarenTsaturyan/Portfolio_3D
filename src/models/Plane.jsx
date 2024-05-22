@@ -51,7 +51,7 @@ export default function Plane({
       const speed = 0.1;
       ref.current.position.x += Math.sin(angle) * speed;
       ref.current.position.z -= Math.abs(Math.cos(angle)) * speed;
-      console.log(targetPosition[0]);
+      // console.log(targetPosition[0]);
       if (ref.current.position.z < -35) {
         if (ref.current.position.x < -16) navigate("/about");
         if (ref.current.position.x > 16) navigate("/skills");
