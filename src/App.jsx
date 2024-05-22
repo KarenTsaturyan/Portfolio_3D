@@ -1,20 +1,22 @@
-import { BrowserRouter as Router } from "react-router-dom";
+import {
+  useLocation,
+} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AnimatePresence } from "framer-motion";
 import AnimatedRoutes from "./AnimatedRoutes";
 import Footer from "./components/Footer";
 
 function App() {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
   return (
-    <main className="bg-slate-300/20">
-      <Router>
-        <Navbar />
-        <AnimatePresence>
-          <AnimatedRoutes />
-        </AnimatePresence>
-        <Footer />
-      </Router>
-    </main>
+    <>
+      <Navbar />
+      <AnimatePresence>
+        <AnimatedRoutes />
+      </AnimatePresence>
+      {!isHomePage && <Footer />}
+    </>
   );
 }
 

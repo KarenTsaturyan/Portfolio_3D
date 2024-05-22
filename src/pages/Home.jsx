@@ -65,7 +65,7 @@ const Home = () => {
         {!isShooting && <HomeInfo />}
       </div>
       <div className="absolute top-20 left-0 z-10 right-0 flex items-center justify-center xl:hidden bg-red-200 py-3  text-center text-xl text-gray-700">
-        <p>For better experience please try this with PC or Laptop!🙏</p>
+        <p className="text-xs sm:text-base">For better experience please try this <b>page</b> with PC or Laptop!🙏</p>
       </div>
 
       <Canvas camera={{ near: 0.1, far: 1000 }}>
