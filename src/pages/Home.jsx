@@ -7,7 +7,7 @@ import Bird from "../models/Bird";
 import Plane from "../models/Plane";
 import HomeInfo from "../components/HomeInfo";
 
-const Home = () => {
+const Home = ({isPortrait}) => {
   const [isRotating, setIsRotating] = useState(true);
   const [isShooting, setIsShooting] = useState(false);
 
@@ -62,7 +62,7 @@ const Home = () => {
         className="absolute top-28 left-0 right-0 z-10 
       flex items-center justify-center opacity-90"
       >
-        {!isShooting && <HomeInfo />}
+        {!isPortrait && !isShooting && <HomeInfo />}
       </div>
       <div className="absolute top-20 left-0 z-10 right-0 flex items-center justify-center xl:hidden bg-red-200 py-3  text-center text-xl text-gray-700">
         <p className="text-xs lg:text-base">For better experience try this <b>page</b> with PC or Laptop!🙏</p>

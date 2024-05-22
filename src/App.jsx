@@ -6,6 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import AnimatedRoutes from "./AnimatedRoutes";
 import Footer from "./components/Footer";
 
+
 function App() {
   const location = useLocation();
   const isHomePage = location.pathname === "/";

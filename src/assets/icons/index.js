@@ -16,6 +16,7 @@ import tailwindcss from './tailwindcss.svg'
 import typescript from './typescript.svg'
 import linkedin from './linkedin.svg'
 import arrow from './arrow.svg'
+import rotate from './rotate.svg'
 
 export {
     css,
@@ -36,4 +37,5 @@ export {
     typescript,
     linkedin,
     arrow,
+    rotate,
 }

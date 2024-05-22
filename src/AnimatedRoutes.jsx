@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   BrowserRouter as Router,
@@ -9,6 +9,7 @@ import {
 import { Home, Projects, Skills, About } from "./pages";
 import NotFoundPage from "./pages/NotFoundPage";
 import { Loader } from "@react-three/drei";
+import RotatePrompt from "./components/Rotate";
 
 const SlideFadeTransition = ({ children }) => {
   return (
@@ -86,11 +87,24 @@ const SmokeOverlay = ({ children }) => {
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+  const [isPortrait, setIsPortrait] = useState(
+    window.innerHeight > window.innerWidth
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsPortrait(window.innerHeight > window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div location={location} key={location.pathname}>
+      <RotatePrompt isPortrait={isPortrait}/>
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isPortrait={isPortrait}/>} />
         <Route
           path="/about"
           element={
